@@ -10,7 +10,7 @@ namespace Searchfight.Core.Entities
 		public string Query { get; set; }
 		public SearchfightSearchStatus SearchStatus { get; set; }
 		public string ProviderName { get; set; }
-		public int ResultCount { get; set; }
+		public long ResultCount { get; set; }
 		public string ErrorCode { get; set; }
 		public string ErrorMessage { get; set; }
 	}

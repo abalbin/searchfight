@@ -62,11 +62,24 @@ namespace Searchfight.Test
 
 			var searchResults = await searchService.SearchfightSearch(searchQueries);
 
-			// var searchClient = new Mock<ISear
 			Assert.Equal(2, searchResults.Count());
 			Assert.Equal(false, searchResults.All(r => r.SearchStatus == SearchfightSearchStatus.Success));
 			Assert.Equal(1, searchResults.Where(r => r.SearchStatus == SearchfightSearchStatus.Success).Count());
 			Assert.Equal(1, searchResults.Where(r => r.SearchStatus == SearchfightSearchStatus.Error).Count());
+		}
+
+		[Fact]
+		public async void SearchfightSearchShouldReturn1ItemInSuccessStateForGoogle()
+		{
+			var searchQueries = new string[] { "some:query:1" };
+			// mock the services
+
+			var searchService = new SearchService(new GoogleSearchClient(), null);
+
+			var searchResults = await searchService.SearchfightSearch(searchQueries);
+
+			Assert.Equal(1, searchResults.Count());
+			Assert.Equal(true, searchResults.ToList()[0].ResultCount > 0);
 		}
 	}
 }

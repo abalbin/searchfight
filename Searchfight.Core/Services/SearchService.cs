@@ -15,6 +15,7 @@ namespace Searchfight.Core.Services
 		// the search clients will be injected to this class
 		private readonly ISearchClient _googleSearchClient;
 		private readonly ISearchClient _bingSearchClient;
+
 		public SearchService(ISearchClient googleSearchClient, ISearchClient bingSearchClient)
 		{
 			_googleSearchClient = googleSearchClient;
@@ -41,6 +42,12 @@ namespace Searchfight.Core.Services
 			{
 				// get the search client form the factory
 				var searchClient = CreateSearchClient(providerName);
+
+				if (searchClient == null)
+				{
+					// if the search client is null, continue with the next one
+					continue;
+				}
 
 				// iterate between the queries and perform each search
 				foreach (var query in searchQueries)

@@ -4,6 +4,6 @@ namespace Searchfight.Core.Interfaces
 {
 	public interface ISearchClient
 	{
-		Task<int> PerformSearch(string query);
+		Task<long> PerformSearch(string query);
 	}
 }
