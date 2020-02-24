@@ -31,6 +31,8 @@ namespace Searchfight.ConsoleApp
 
 			// print the results
 			Printers.PrintSearchfight(searchResults);
+
+			Console.ReadKey();
 		}
 	}
 }

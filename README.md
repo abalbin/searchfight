@@ -12,9 +12,10 @@ This app will let you know which pre configured search engine has the highest nu
 1. Clone this repository
 2. Execute `dotnet restore`
 3. Go to the Searchfight.ConsoleApp project `cd Searchfight.ConsoleApp/`
+4. Replace your Bing Search API key in `Searchfight/ConsoleApp/Program.cs`
 4. Execute `dotnet publish -r win-x64 -c Release --self-contained`
 5. Go to `cd ./bin/Release/netcoreapp3.1/win-x64/publish/`
-6. Perform a search with `Searchfight.ConsoleApp.exe [queries]`. For example: `Searchfight.ConsoleApp.exe .net java "ruby on rails"`
+6. Perform a search with `start Searchfight.ConsoleApp.exe [queries]`. For example: `start Searchfight.ConsoleApp.exe .net java "ruby on rails"`
 
 ## Debug with the CLI
 
