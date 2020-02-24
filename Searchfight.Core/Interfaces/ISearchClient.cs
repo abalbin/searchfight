@@ -1,6 +1,6 @@
 using System.Threading.Tasks;
 
-namespace Searchfight.Infra.SearchClients
+namespace Searchfight.Core.Interfaces
 {
 	public interface ISearchClient
 	{

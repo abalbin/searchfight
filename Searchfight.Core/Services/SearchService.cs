@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Searchfight.Core.Entities;
-using Searchfight.Infra.SearchClients;
+using Searchfight.Core.Interfaces;
 
 namespace Searchfight.Core.Services
 {
@@ -11,6 +11,15 @@ namespace Searchfight.Core.Services
 		// set here the name of the providers that you want to use for the fight
 		// you must be sure that the provider client is implemented at Searchfight.Infra.SearchClients
 		private readonly HashSet<string> _searchProviderNames = new HashSet<string> { "google", "bing" };
+
+		// the search clients will be injected to this class
+		private readonly ISearchClient _googleSearchClient;
+		private readonly ISearchClient _bingSearchClient;
+		public SearchService(ISearchClient googleSearchClient, ISearchClient bingSearchClient)
+		{
+			_googleSearchClient = googleSearchClient;
+			_bingSearchClient = bingSearchClient;
+		}
 
 		public async Task<IEnumerable<SearchfightSearchResult>> SearchfightSearch(string[] searchQueries)
 		{
@@ -72,8 +81,8 @@ namespace Searchfight.Core.Services
 		{
 			switch (providerName)
 			{
-				case "google": return new GoogleSearchClient();
-				case "bing": return new BingSearchClient();
+				case "google": return _googleSearchClient;
+				case "bing": return _bingSearchClient;
 				default: return null;
 			}
 		}

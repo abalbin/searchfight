@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Searchfight.Core.Entities;
 
-namespace Searchfight.Core.Services
+namespace Searchfight.Core.Interfaces
 {
 	public interface ISearchService
 	{

@@ -1,8 +1,9 @@
 using System.Threading.Tasks;
+using Searchfight.Core.Interfaces;
 
 namespace Searchfight.Infra.SearchClients
 {
-	public class GoogleSearchClient : BaseSearchClient, ISearchClient
+	public class GoogleSearchClient : ISearchClient
 	{
 
 		public async Task<int> PerformSearch(string query)
